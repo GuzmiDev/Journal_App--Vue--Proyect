@@ -22,7 +22,7 @@
     <textarea placeholder="¿Qué sucedió hoy" />
   </div>
 
-  <Fab />
+  <Fab icon="fa-save" />
 
   <img
     src="https://concepto.de/wp-content/uploads/2015/03/paisaje-800x409.jpg"
