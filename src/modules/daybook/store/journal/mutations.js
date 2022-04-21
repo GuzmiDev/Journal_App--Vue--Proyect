@@ -14,4 +14,10 @@ export const updateEntry = (state, entryUpdated) => {
   const idx = state.entries.map((e) => e.id).indexOf(entryUpdated.id);
   state.entries[idx] = entryUpdated;
 };
-export const addEntry = (/*state*/) => {};
+export const addEntry = (state, entry) => {
+  state.entries.unshift(entry);
+};
+
+export const deleteEntry = (state, id) => {
+  state.entries = state.entries.filter((entry) => entry.id !== id);
+};
