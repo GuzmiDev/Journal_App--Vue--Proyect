@@ -19,7 +19,7 @@
     <div class="d-flex flex-column px-3 h-75">
       <textarea v-model="entry.text" placeholder="¿Qué sucedió hoy" />
     </div>
-    <Fab icon="fa-save" />
+    <Fab icon="fa-save" @click="saveEntry" />
     <img
       src="https://concepto.de/wp-content/uploads/2015/03/paisaje-800x409.jpg"
       alt="entry-picture"
@@ -30,7 +30,7 @@
 
 <script>
 import { defineAsyncComponent } from "@vue/runtime-core";
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import getDayMontYear from "../helpers/getDayMonthYear";
 export default {
   props: {
@@ -56,6 +56,10 @@ export default {
     },
   },
   methods: {
+    ...mapActions("journal", ["updateEntry"]),
+    async saveEntry() {
+      this.updateEntry(this.entry);
+    },
     loadEntry() {
       const entry = this.getEntryById(this.id);
       if (!entry) return this.$router.push({ name: "no-entry" });
